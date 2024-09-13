@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>需求去重工具</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        .rounded-box {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        #results-box {
+            display: none;
+        }
+        table th {
+            position: sticky;
+            top: 0;
+            background: #f8f9fa;
+        }
+        .dedup-button {
+            border-radius: 10px;
+            padding: 10px 20px;
+        }
+        #loading-message {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #007bff;
+        }
+        .download-box {
+            margin-top: 40px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">需求去重工具</h1>
+
+        <!-- Input Section -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="rounded-box">
+                    <h4>参照需求</h4>
+                    <small>上传文件必须为csv格式，并必须包含"id", "subject", "description"三个字段。</small><br>
+                    <small>每行一条，参照需求总数不超过100。</small>
+                    <input type="file" id="reference_file" class="form-control mt-2">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="rounded-box">
+                    <h4>目标需求</h4>
+                    <small>上传文件必须为csv格式，并必须包含"id", "subject", "description"三个字段。</small><br>
+                    <small>只会读取第一行数据作为的目标需求，将其与参照需求逐一进行去重比对。</small>
+                    <input type="file" id="target_file" class="form-control mt-2">
+                </div>
+            </div>
+        </div>
+
+        <!-- Dedup Button -->
+        <div class="text-center">
+            <button id="dedup_button" class="btn btn-primary dedup-button">去重</button>
+        </div>
+
+        <!-- Loading Message -->
+        <div id="loading-message">正在处理中...</div>
+
+        <!-- Output Section -->
+        <div id="results-box" class="rounded-box mt-4">
+            <h4>结果</h4>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>目标需求id</th>
+                            <th>参照需求id</th>
+                            <th>余弦相似度</th>
+                            <th>重复可能性(LLM)</th>
+                            <th>分析</th>
+                            <th>新需求建议</th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-table"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Download Example Files Section -->
+        <div class="download-box">
+            <h4>示例文件下载</h4>
+            <p>点击下列链接下载CSV格式的示例文件：</p>
+            <ul>
+                <li><a href="downloads/English_target_example.csv" download>English_target_example.csv</a></li>
+                <li><a href="downloads/English_ref_example.csv" download>English_ref_example.csv</a></li>
+                <li><a href="downloads/Chinese_target_example.csv" download>Chinese_target_example.csv</a></li>
+                <li><a href="downloads/Chinese_ref_example.csv" download>Chinese_ref_example.csv</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#dedup_button').on('click', function() {
+                let refFile = $('#reference_file')[0].files[0];
+                let tgtFile = $('#target_file')[0].files[0];
+
+                if (!refFile || !tgtFile) {
+                    alert('请上传两个文件');
+                    return;
+                }
+
+                // 显示“正在处理中...”消息
+                $('#loading-message').show();
+                $('#results-box').hide(); // 隐藏结果框
+
+                let formData = new FormData();
+                formData.append('reference_file', refFile);
+                formData.append('target_file', tgtFile);
+
+                // Upload the files first
+                $.ajax({
+                    url: '/upload',
+                    type: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        if (response.error) {
+                            alert(response.error);
+                            return;
+                        }
+                        // Trigger deduplication after file upload
+                        startDeduplication();
+                    },
+                    error: function() {
+                        alert('文件上传失败');
+                        $('#loading-message').hide(); // 隐藏“正在处理中...”消息
+                    }
+                });
+            });
+
+            function startDeduplication() {
+                $.ajax({
+                    url: '/deduplicate',
+                    type: 'POST',
+                    success: function(data) {
+                        $('#results-table').empty();
+                        data.forEach(function(row) {
+                            $('#results-table').append(
+                                `<tr>
+                                    <td>${row.target_id}</td>
+                                    <td>${row.reference_id}</td>
+                                    <td>${row.cosine_similarity}</td>
+                                    <td>${row.dup_probability}</td>
+                                    <td>${row.analysis}</td>
+                                    <td>${row.suggestion}</td>
+                                </tr>`
+                            );
+                        });
+                        // 隐藏“正在处理中...”消息并显示结果框
+                        $('#loading-message').hide();
+                        $('#results-box').show();
+                    },
+                    error: function() {
+                        alert('去重处理失败');
+                        $('#loading-message').hide(); // 隐藏“正在处理中...”消息
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

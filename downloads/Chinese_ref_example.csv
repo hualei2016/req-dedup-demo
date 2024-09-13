@@ -1,0 +1,50 @@
+id,subject,author,status,related issues,description
+31234,Redmine将问题分配给多个用户,Gary Ge,Closed,Is duplicate of #408,"H3。如何通过勾选我想要的任意用户的复选框，来将一个问题分配给多个用户？
+
+有什么方法可以做到吗？
+
+多谢。"
+408,将任务分配给多个用户,João Saleiro,Closed,"Is duplicate of #1500, Is duplicate of #1990, Is duplicate of #3043, Is duplicate of #1802, Is duplicate of #3444, Is duplicate of #4211, Is duplicate of #4711, Is duplicate of #5644, Is duplicate of #6619, Is duplicate of #9418, Is duplicate of #408, Is duplicate of #31234","如果可以将任务分配给多个用户，那就太好了。并有另一个状态，“正在被解决”，同时锁定任务并将其“分配”给特定的人。
+
+为什么：
+
+在某些团队中，有几名员工能够解决一个特定任务。最好能将任务分配给几个员工，第一个可用的人将承担这个任务，将其设置为“正在被解决”并分配给自己。"
+449,键盘快捷键,Motohiro Takayama,Reopened,Is duplicate of #27401,"如果Redmine像TRAC或一些Nifty Web应用程序那样支持键盘快捷键，那将是非常方便和高效的。
+例如，按CTRL+R进行预览，Ctrl+S提交，Ctrl+/输入搜索文本，...
+
+为了支持上面的支持，我们只需要在元素（例如输入，a）中添加“ accessKey”属性。
+
+谢谢，"
+588,在项目之间移动timelog,Michael Pirogov,Closed,"Is duplicate of #22399, Is duplicate of #25381","如果能在项目之间移动或删除您的timelog（就像issue_move那样），那就太好了。例如
+错误原因。"
+654,对帮助做I18N,sunday walker,New,Is duplicate of #32501,"对帮助做I18N的一个例子。
+
+原始 http://redmine.rubyforge.org/svn/tags/0.6.3"
+684,在问题列表中添加日记帐计数,jinwoo lee,New,"Is duplicate of #684, Is duplicate of #27541","我认为如能看到日志数总比什么都没有好。
+因为这样很容易理解issue的活动情况。
+所以我做了这个补丁。"
+877,用不同单位跟踪时间的能力,ilenia zara,New,Is duplicate of #26358,一些开发方法论建议，使用“点”甚至“西红柿”（http://www.tecnicadelpomodoro.it）中跟踪时间。如果Redmine这些这些时间跟踪方式，那就太好了。
+1140,使用每个字段的多个实例进行过滤,Paolo Sulprizio,New,"Is duplicate of #4560, Is duplicate of #27365","我想使用每个字段的多个实例过滤问题。
+例子：
+包含“电子邮件”但不包含“服务器”的主题问题..."
+1278,创建全局（默认）类别。,Yanoksy Durañona Yero,New,"Is duplicate of #2521, Is duplicate of #26327","除了单独为每个项目，如果可以为所有项目创建类别，那将是很棒的。就我而言，我有太多的项目，几乎所有项目都具有相同的类别，并且为每个项目创建类别有点累人。
+
+Redmine是最好的！！！"
+1385,从JIRA导入的脚本,Charles L,New,Is duplicate of #29097,"我已经附上了“ Migrate_from_jira.rake”，该脚本是基于TRAC Migration脚本和Jira2trac.rb之上建模的，可以在TRAC的主页上找到。
+
+尽管它没有像jira2trac.rb + migrate_from_trac.rake那样精心打磨，它具有更好的保真度。希望它可以作为实现优雅导入的一个良好起点。
+
+当前，它以JIRA issue的XML格式的dump为输入（根据jira2trac.rb），基于此，它导入项目，子项目，用户，问题类别，问题和发行评论。"
+1680,让版本说明支持多行文字和textilie化,Artem Vasiliev,New,Is duplicate of #31618,"让版本说明支持Textile markup，以便做到与TRAC的里程碑描述相一致（支持其Wiki Markup）。
+我们需要这个能力以将我们的项目从TRAC迁移，似乎其他人也需要它，例如＃1256。
+
+由Texuna Technologies贡献。"
+1737,自动关注问题,colin moock,Closed,Is duplicate of #28312,"我非常喜欢拥有类似于补丁222的功能。也就是说，每个用户可以选择：
+
+*“自动关注我已经修改了的问题”（即，如果我创建或修改问题，请自动关注）
+*“自动关注分配给我的问题”
+
+与Balazs（Patch＃222的作者）不同，我希望用户能够选择自己的“自动关注”策略。
+
+除了补丁＃222之外，我找不到任何其他提及此功能的。有计划实施它吗？"
+1739,增加更改问题作者的能力,Burt Culver,Reopened,"Is duplicate of #2035, Is duplicate of #3642, Is duplicate of #3799, Is duplicate of #9701, Is duplicate of #14465, Is duplicate of #23460",有时，我提交一个问题，但是在过程中不再负责跟踪它。我希望能够更改问题的所有者，以便我不再收到有关该问题的电子邮件，而且这样谁负责跟踪问题会更加清晰。新所有者已经可以通过使自己成为关注者来获取电子邮件，但是这里建议的更改将消除这一步骤的必要性。

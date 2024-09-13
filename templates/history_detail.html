@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>访问历史详情</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>访问详情</h1>
+    <h2>概要信息</h2>
+    <p>开始时间: {{ log['start_time'] }}</p>
+    <p>结束时间: {{ log['end_time'] }}</p>
+    <p>参照需求文件: {{ log['reference_file'] }}</p>
+    <p>目标需求文件: {{ log['target_file'] }}</p>
+    <p>去重结果文件: {{ log['dedup_file'] }}</p>
+    <p>比对次数: {{ log['reference_count'] }}</p>
+    <p>LLM 调用次数: {{ log['llm_query_count'] }}</p>
+    <p>判定重复次数: {{ log['dup_count'] }}</p>
+    
+    <h2>去重结果</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>目标需求</th>
+                <th>参照需求ID</th>
+                <th>余弦相似度</th>
+                <th>重复可能性</th>
+                <th>分析</th>
+                <th>新需求建议</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+            <tr>
+                <td>{{ result['target_id'] }}</td>
+                <td>{{ result['reference_id'] }}</td>
+                <td>{{ result['cosine_similarity'] }}</td>
+                <td>{{ result['dup_probability'] }}</td>
+                <td>{{ result['analysis'] }}</td>
+                <td>{{ result['suggestion'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <h2>下载原始文件</h2>
+    <a href="{{ ref_download_url }}">下载 Reference 文件</a><br>
+    <a href="{{ target_download_url }}">下载 Target 文件</a>
+</body>
+</html>
+

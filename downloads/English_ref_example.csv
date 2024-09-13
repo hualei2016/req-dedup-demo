@@ -1,0 +1,57 @@
+id,subject,author,status,related issues,description
+31234,Redmine assign a issue to more than one user,Gary Ge,Closed,Is duplicate of #408,"h3. How to assign a issue to more than one user by checking the checkbox of any user I want?
+
+Is there any way to make it?
+
+Thanks a lot."
+408,Assign a task to multiple users,João Saleiro,Closed,"Is duplicate of #1500, Is duplicate of #1990, Is duplicate of #3043, Is duplicate of #1802, Is duplicate of #3444, Is duplicate of #4211, Is duplicate of #4711, Is duplicate of #5644, Is duplicate of #6619, Is duplicate of #9418, Is duplicate of #408, Is duplicate of #31234","It would be great if it was possible to assign a task to multiple users; And have another state, ""being solved"",
+where a task is locked and ""assigned"" to a specific one.
+
+Why: 
+
+In some teams, there are several workers with the ability to solve a specific task. It would be preferable to assign
+a task to several workers, and the first who gets available would then grab the task, setting the ""being solved""
+to himself.
+"
+449,Keyboard shortcuts,Motohiro Takayama,Reopened,Is duplicate of #27401,"It would be so convinient and productive if redMine supports keyboard shortcuts like Trac or some nifty web apps.
+For example,  press Ctrl+R to preview, Ctrl+S to submit, Ctrl+/ to enter search text, ...
+
+To support above, we would only need to add ""accesskey"" attribute to elements (like input, a).
+
+Thanks,"
+588,Move timelog between projects,Michael Pirogov,Closed,"Is duplicate of #22399, Is duplicate of #25381","It'll be nice to have an ability to move or delete your timelog entries between projects (as issue_move). For example
+cause of mistake.
+
+"
+654,The i18n of the help ,sunday walker,New,Is duplicate of #32501,"This is an example of the i18n of the help.
+
+original http://redmine.rubyforge.org/svn/tags/0.6.3
+"
+684,Add journal count on issues list,jinwoo lee,New,"Is duplicate of #684, Is duplicate of #27541","I think that viewing journal count is better than nothing.
+Because it is easy to understand issues's activity.
+so I make this patch."
+877,ability to vary the units used to track time,ilenia zara,New,Is duplicate of #26358,Some development methodologies suggest tracking time in points or even "tomatoes" (http://www.tecnicadelpomodoro.it).  It would be nice if Redmine had the ability to support these forms of time tracking.
+1140,Filtering using more than one instance of each field,Paolo Sulprizio,New,"Is duplicate of #4560, Is duplicate of #27365","I would like to filter issues using more than one instance of each field.
+Example:
+issues with subject containing ""email"" but not containing ""server""..."
+1278,Creating global (default) categories.,Yanoksy Durañona Yero,New,"Is duplicate of #2521, Is duplicate of #26327","It would be great if Categories could be created globally for all projects besides for each project independently. In my case I have too many project where almost all of them features the same categories and it is kinda tiresome creating categories for each project.
+
+Redmine is the Best!!!"
+1385,Script for import from JIRA,Charles L,New,Is duplicate of #29097,"I've attached ""migrate_from_jira.rake"", which was modeled on both the trac migration script, and jira2trac.rb which can be found at trac's home page.
+
+Though it isn't as polished as it could be, it gives better fidelity than jira2trac.rb + migrate_from_trac.rake, and hopefully it servers as a good starting point for any other tweaks needed to do a decent import.
+
+It currently takes as input (as per jira2trac.rb), an xml dump of issue info from jira. Based on that, it imports projects, sub-projects, users, issue categories, issues, and issue comments."
+1680,Make version description multiline and textilizable,Artem Vasiliev,New,Is duplicate of #31618,"Made Version description support Textile markup to be in-sync with Trac milestone description (supporting its Wiki markup).
+We needed this for migrating our projects from Trac, and it appears others need it also, e.g. #1256.
+
+Contributed by Texuna Technologies."
+1737,autowatch issues,colin moock,Closed,Is duplicate of #28312,"i'd very much like to have a feature similar to Patch #222. that is, a per-user option to:
+
+* ""auto-watch issues i've modified"" (i.e., autowatch if i create or modify an issue)
+* ""auto-watch issues assigned to me""
+
+Unlike Balazs (author of Patch #222), i'd want users to be able to choose their own ""autowatch"" policy.
+
+Other than Patch #222, I couldn't find any other mention of this feature. Are there plans to implement it?"
+1739,Add ability to change issue author,Burt Culver,Reopened,"Is duplicate of #2035, Is duplicate of #3642, Is duplicate of #3799, Is duplicate of #9701, Is duplicate of #14465, Is duplicate of #23460","Sometimes, I submit an issue, but down the road am no longer responsible for tracking it.  I'd like to be able to change the owner of the issue so that I no longer receive emails on the issue and it is clearer who is responsible for tracking issue.  The new owner can already make themselves watcher to get the emails but this change would eliminate that step."

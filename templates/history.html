@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>访问历史</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>访问历史</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>参照需求文件</th>
+                <th>目标需求文件</th>
+                <th>去重结果文件</th>
+                <th>比对次数</th>
+                <th>LLM 调用次数</th>
+                <th>判定重复次数</th>
+                <th>详情</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log['start_time'] }}</td>
+                <td>{{ log['end_time'] }}</td>
+                <td>{{ log['reference_file'] }}</td>
+                <td>{{ log['target_file'] }}</td>
+                <td>{{ log['dedup_file'] }}</td>
+                <td>{{ log['reference_count'] }}</td>
+                <td>{{ log['llm_query_count'] }}</td>
+                <td>{{ log['dup_count'] }}</td>
+                <td><a href="/history/{{ log['id'] }}">详情</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+

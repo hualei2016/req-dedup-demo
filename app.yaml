@@ -1,0 +1,13 @@
+instance_class: B4_1G
+manual_scaling:
+  instances: 1
+
+runtime: python310
+entrypoint: gunicorn -t 120 -b :$PORT app:app
+
+env_variables:
+  DASHSCOPE_API_KEY: "chang this to use your own key"
+
+handlers:
+- url: /.*
+  script: auto

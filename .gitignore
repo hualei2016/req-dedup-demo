@@ -1,0 +1,29 @@
+# Python pycache:
+__pycache__/
+*.pyc
+
+# Ignored by the build system
+/setup.cfg
+
+# ignore env config
+.env
+
+# ignore files with keys
+new-req-dedup-19e436c5f8b8.json
+app.yaml.withkey
+
+# Ignore virtual environment
+venv/
+
+# Ignore any IDE or editor-specific files
+*.log
+*.tmp
+.idea/
+.vscode/
+.DS_Store
+
+# Ignore node_modules if using a JavaScript framework in part of your project
+node_modules/
+
+# ignore example files
+example-input-files/

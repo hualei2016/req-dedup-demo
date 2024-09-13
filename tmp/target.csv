@@ -1,0 +1,6 @@
+id,subject,author,status,related issues,description
+7,将任务分配给多个用户,João Saleiro,Closed,"Is duplicate of #1500, Is duplicate of #1990, Is duplicate of #3043, Is duplicate of #1802, Is duplicate of #3444, Is duplicate of #4211, Is duplicate of #4711, Is duplicate of #5644, Is duplicate of #6619, Is duplicate of #9418, Is duplicate of #408, Is duplicate of #31234","如果可以将任务分配给多个用户，那就太好了。并有另一个状态，“正在被解决”，同时锁定任务并将其“分配”给特定的人。
+
+为什么：
+
+在某些团队中，有几名员工能够解决一个特定任务。最好能将任务分配给几个员工，第一个可用的人将承担这个任务，将其设置为“正在被解决”并分配给自己。"

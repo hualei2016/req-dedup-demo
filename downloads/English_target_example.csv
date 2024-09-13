@@ -1,0 +1,10 @@
+id,subject,author,status,related issues,description
+7,Assign a task to multiple users,João Saleiro,Closed,"Is duplicate of #1500, Is duplicate of #1990, Is duplicate of #3043, Is duplicate of #1802, Is duplicate of #3444, Is duplicate of #4211, Is duplicate of #4711, Is duplicate of #5644, Is duplicate of #6619, Is duplicate of #9418, Is duplicate of #408, Is duplicate of #31234","It would be great if it was possible to assign a task to multiple users; And have another state, ""being solved"",
+where a task is locked and ""assigned"" to a specific one.
+
+Why: 
+
+In some teams, there are several workers with the ability to solve a specific task. It would be preferable to assign
+a task to several workers, and the first who gets available would then grab the task, setting the ""being solved""
+to himself.
+"
